@@ -899,6 +899,7 @@ require('lazy').setup({
     -- end,
     config = function()
       vim.cmd "let g:gruvbox_material_background = 'hard'"
+      -- vim.cmd "let g:gruvbox_material_transparent_background = 1"
       vim.cmd 'colorscheme gruvbox-material'
     end,
   },
