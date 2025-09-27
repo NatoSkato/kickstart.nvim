@@ -1031,6 +1031,7 @@ require('luasnip').config.set_config { -- Setting LuaSnip config
   -- Use Tab (or some other key if you prefer) to trigger visual selection
   store_selection_keys = '<Tab>',
   update_events = 'TextChanged,TextChangedI',
+  vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>'),
 }
 require('luasnip.loaders.from_lua').load { paths = { '~/.config/nvim/LuaSnip/' } }
 vim.cmd [[
