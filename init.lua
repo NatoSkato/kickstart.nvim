@@ -1044,6 +1044,10 @@ smap <silent><expr> <C-f> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<C-
 imap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 smap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 ]]
+vim.api.nvim_set_keymap('i', '<C-n>', '<Plug>luasnip-next-choice', {})
+vim.api.nvim_set_keymap('s', '<C-n>', '<Plug>luasnip-next-choice', {})
+vim.api.nvim_set_keymap('i', '<C-p>', '<Plug>luasnip-prev-choice', {})
+vim.api.nvim_set_keymap('s', '<C-p>', '<Plug>luasnip-prev-choice', {})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 vim.cmd 'set shellcmdflag=-ic'
