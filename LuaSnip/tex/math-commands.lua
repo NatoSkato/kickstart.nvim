@@ -48,7 +48,6 @@ local symbol_snippet = require('scaffolding').symbol_snippet
 local single_command_snippet = require('scaffolding').single_command_snippet
 local postfix_snippet = require('scaffolding').postfix_snippet
 local get_visual = require('scaffolding').get_visual
-
 -- fractions (parentheses case)
 local generate_fraction = function(_, snip)
   local stripped = snip.captures[1]
