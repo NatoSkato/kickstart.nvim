@@ -36,7 +36,7 @@ local function add_require_path(dir)
   end
 end
 
-add_require_path '~/.config/nvim/LuaSnip/tex/utils/' -- Linux form
+add_require_path(tostring(os.getenv 'HOME') .. '/.config/nvim/LuaSnip/tex/utils') -- Linux form
 add_require_path '~\\.config\\nvim\\LuaSnip\\tex\\utils\\' -- Windows form (normalized automatically)
 
 -- local my_module = require("my_module")  -- Will look for my_module.lua in that dir
