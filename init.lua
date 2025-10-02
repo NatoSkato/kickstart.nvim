@@ -912,6 +912,16 @@ require('lazy').setup({
   },
   {
     'L3MON4D3/LuaSnip',
+    version = '2.*',
+    build = (function()
+      -- Build Step is needed for regex support in snippets.
+      -- This step is not supported in many windows environments.
+      -- Remove the below condition to re-enable on windows.
+      if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+        return
+      end
+      return 'make install_jsregexp'
+    end)(),
   },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -1050,6 +1060,10 @@ imap <silent><expr> <Tab> luasnip#expandable() ? '<Plug>luasnip-expand-snippet' 
 " Jump forward in through tabstops in insert and visual mode with Control-f
 imap <silent><expr> <C-f> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<C-f>'
 smap <silent><expr> <C-f> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<C-f>'
+"The next two lines are a fix for jumping being disabled when nvim cmp is for some reason"
+smap <silent><expr> <Tab> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
+imap <silent><expr> <Tab> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
+""
 imap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 smap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 ]]
