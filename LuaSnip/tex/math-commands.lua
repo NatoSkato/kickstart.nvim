@@ -352,7 +352,7 @@ local symbol_specs = {
   -- etc
   ooo = { context = { name = '∞' }, command = [[\infty]] },
   lll = { context = { name = 'ℓ' }, command = [[\ell]] },
-  dag = { context = { name = '†' }, command = [[\dagger]] },
+  dgg = { context = { name = '†' }, command = [[\dagger]] },
   ['+-'] = { context = { name = '†' }, command = [[\pm]] },
   ['-+'] = { context = { name = '†' }, command = [[\mp]] },
 }

@@ -1028,6 +1028,9 @@ require('luasnip').config.set_config { -- Setting LuaSnip config
   -- Enable autotriggered snippets
   enable_autosnippets = true,
 
+  --check events (eg exit snippet when you move or delete it)
+  region_check_events = 'InsertEnter',
+  delete_check_events = 'TextChanged,InsertLeave',
   -- Use Tab (or some other key if you prefer) to trigger visual selection
   store_selection_keys = '<Tab>',
   update_events = 'TextChanged,TextChangedI',
