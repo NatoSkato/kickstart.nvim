@@ -61,9 +61,12 @@ end
 
 -- visual util to add insert node - thanks ejmastnak!
 M.get_visual = function(_, parent)
-  return sn(nil, i(1, parent.snippet.env.SELECT_RAW))
+  if #parent.snippet.env.LS_SELECT_RAW > 0 then
+    return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
+  else -- If LS_SELECT_RAW is empty, return a blank insert node
+    return sn(nil, i(1))
+  end
 end
-
 -- Auto backslash - thanks kunzaatko! (ref: https://github.com/kunzaatko/nvim-dots/blob/trunk/lua/snippets/tex/utils/snippet_templates.lua)
 M.auto_backslash_snippet = function(context, opts)
   opts = opts or {}
@@ -148,7 +151,7 @@ M.single_command_snippet = function(context, command, opts, ext)
     context.hidden = true
   end
   -- stype = ext.stype or s
-  return s(context, fmta(command .. [[<>{<>}<><>]], { cnode or t '', d(1 + (offset or 0), get_visual), (lnode or t ''), i(0) }), opts)
+  return s(context, fmta(command .. [[<>{<>}<><>]], { cnode or t '', d(1 + (offset or 0), M.get_visual), (lnode or t ''), i(0) }), opts)
 end
 
 M.postfix_snippet = function(context, command, opts)
