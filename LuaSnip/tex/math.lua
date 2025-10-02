@@ -90,7 +90,7 @@ M = {
     { trig = 'lm', name = '$..$', dscr = 'inline math' },
     fmta(
       [[
-    $<>$<>
+    \(<>\)<>
     ]],
       { i(1), i(0) }
     )
@@ -108,7 +108,7 @@ M = {
     ),
     { condition = line_begin, show_condition = tex.show_line_begin }
   ),
-
+  -- autosnippet({ trig = 'sqrt' }, t '\\sqrt', { condition = tex.in_math }),
   autosnippet(
     { trig = 'ali', name = 'align(|*|ed)', dscr = 'align math' },
     fmta(
@@ -181,6 +181,26 @@ M = {
         d(1, generate_matrix),
         f(function(_, snip)
           return snip.captures[1] .. 'matrix'
+        end),
+      }
+    ),
+    { condition = tex.in_math, show_condition = tex.in_math }
+  ),
+  autosnippet(
+    { trig = '([ZN])(%S+)([ZN])', name = 'Z mod n', descr = 'residue classes set', regTrig = true },
+    fmta(
+      [[
+	\mathbb{<>} \setminus <>\mathbb{<>}
+	]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        f(function(_, snip)
+          return snip.captures[2]
+        end),
+        f(function(_, snip)
+          return snip.captures[3]
         end),
       }
     ),

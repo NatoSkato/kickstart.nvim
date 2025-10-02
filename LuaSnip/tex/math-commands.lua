@@ -86,7 +86,7 @@ M = {
 
   -- fractions
   autosnippet(
-    { trig = '//', name = 'fraction', dscr = 'fraction (general)' },
+    { trig = '/', name = 'fraction', dscr = 'fraction (general)' },
     fmta(
       [[
     \frac{<>}{<>}<>
@@ -95,6 +95,7 @@ M = {
     ),
     { condition = tex.in_math, show_condition = tex.in_math }
   ),
+  autosnippet({ trig = './', name = '/', dscr = '/ defucker', priority = 2000 }, t '/', { condition = tex.in_math, show_condition = tex.in_math }),
   autosnippet(
     { trig = '((\\d+)|(\\d*)(\\\\)?([A-Za-z]+)((\\^|_)(\\{\\d+\\}|\\d))*)\\/', name = 'fraction', dscr = 'auto fraction 1', trigEngine = 'ecma' },
     fmta(
@@ -242,34 +243,34 @@ local auto_backslash_specs = {
 }
 
 local auto_backslash_snippets = {}
--- for _, v in ipairs(auto_backslash_specs) do
---   table.insert(auto_backslash_snippets, auto_backslash_snippet({ trig = v }, { condition = tex.in_math, show_condition = tex.in_math }))
--- end
 for _, v in ipairs(auto_backslash_specs) do
-  table.insert(auto_backslash_snippets, autosnippet({ trig = v }, { t('\\' .. v) }, { condition = tex.in_math, show_condition = tex.in_math }))
+  table.insert(auto_backslash_snippets, auto_backslash_snippet({ trig = v }, { condition = tex.in_math, show_condition = tex.in_math }))
 end
+-- for _, v in ipairs(auto_backslash_specs) do
+--   table.insert(auto_backslash_snippets, autosnippet({ trig = v }, { t('\\' .. v) }, { condition = tex.in_math, show_condition = tex.in_math }))
+-- end
 vim.list_extend(M, auto_backslash_snippets)
 
 -- Symbols/Commands
 local greek_specs = {
-  alpha = { context = { name = 'α' }, command = [[\alpha]] },
-  beta = { context = { name = 'β' }, command = [[\beta]] },
-  gam = { context = { name = 'γ' }, command = [[\gamma]] },
-  Gam = { context = { name = 'Γ' }, command = [[\Gamma]] },
-  delta = { context = { name = 'δ' }, command = [[\delta]] },
-  DD = { context = { name = 'Δ' }, command = [[\Delta]] },
-  eps = { context = { name = 'ε', priority = 500 }, command = [[\epsilon]] },
-  veps = { context = { name = 'ε' }, command = [[\varepsilon]] },
-  zeta = { context = { name = 'ζ' }, command = [[\zeta]] },
-  eta = { context = { name = 'η', priority = 500 }, command = [[\eta]] },
-  theta = { context = { name = 'θ' }, command = [[\theta]] },
-  Theta = { context = { name = 'Θ' }, command = [[\Theta]] },
-  iota = { context = { name = 'ι' }, command = [[\iota]] },
-  kappa = { context = { name = 'κ' }, command = [[\kappa]] },
-  lmbd = { context = { name = 'λ' }, command = [[\lambda]] },
-  Lmbd = { context = { name = 'Λ' }, command = [[\Lambda]] },
+  a = { context = { name = 'α' }, command = [[\alpha]] },
+  b = { context = { name = 'β' }, command = [[\beta]] },
+  gm = { context = { name = 'γ' }, command = [[\gamma]] },
+  Gm = { context = { name = 'Γ' }, command = [[\Gamma]] },
+  d = { context = { name = 'δ' }, command = [[\delta]] },
+  D = { context = { name = 'Δ' }, command = [[\Delta]] },
+  e = { context = { name = 'ε', priority = 500 }, command = [[\epsilon]] },
+  vep = { context = { name = 'ε' }, command = [[\varepsilon]] },
+  z = { context = { name = 'ζ' }, command = [[\zeta]] },
+  n = { context = { name = 'η', priority = 500 }, command = [[\eta]] },
+  th = { context = { name = 'θ' }, command = [[\theta]] },
+  Th = { context = { name = 'Θ' }, command = [[\Theta]] },
+  i = { context = { name = 'ι' }, command = [[\iota]] },
+  k = { context = { name = 'κ' }, command = [[\kappa]] },
+  l = { context = { name = 'λ' }, command = [[\lambda]] },
+  L = { context = { name = 'Λ' }, command = [[\Lambda]] },
   mu = { context = { name = 'μ' }, command = [[\mu]] },
-  nu = { context = { name = 'ν' }, command = [[\nu]] },
+  vv = { context = { name = 'ν' }, command = [[\nu]] },
   xi = { context = { name = 'ξ' }, command = [[\xi]] },
   pi = { context = { name = 'π' }, command = [[\pi]] },
   rho = { context = { name = 'ρ' }, command = [[\rho]] },
@@ -277,19 +278,23 @@ local greek_specs = {
   Sig = { context = { name = 'Σ' }, command = [[\Sigma]] },
   tau = { context = { name = 'τ' }, command = [[\tau]] },
   ups = { context = { name = 'υ' }, command = [[\upsilon]] },
-  phi = { context = { name = 'φ' }, command = [[\phi]] },
-  vphi = { context = { name = 'φ' }, command = [[\varphi]] },
+  ph = { context = { name = 'φ' }, command = [[\phi]] },
+  vph = { context = { name = 'φ' }, command = [[\varphi]] },
   chi = { context = { name = 'χ' }, command = [[\chi]] },
   psi = { context = { name = 'Ψ' }, command = [[\psi]] },
-  omega = { context = { name = 'ω' }, command = [[\omega]] },
-  Omega = { context = { name = 'Ω' }, command = [[\Omega]] },
+  o = { context = { name = 'ω' }, command = [[\omega]] },
+  O = { context = { name = 'Ω' }, command = [[\Omega]] },
 }
 
 local greek_snippets = {}
 for k, v in pairs(greek_specs) do
   table.insert(
     greek_snippets,
-    symbol_snippet(vim.tbl_deep_extend('keep', { trig = k }, v.context), v.command, { condition = tex.in_math, show_condition = tex.in_math, backslash = true })
+    symbol_snippet(
+      vim.tbl_deep_extend('keep', { trig = ';' .. k }, v.context),
+      v.command,
+      { condition = tex.in_math, show_condition = tex.in_math, backslash = true }
+    )
   )
 end
 vim.list_extend(M, greek_snippets)
@@ -354,7 +359,7 @@ local symbol_specs = {
   -- etc
   ooo = { context = { name = '∞' }, command = [[\infty]] },
   lll = { context = { name = 'ℓ' }, command = [[\ell]] },
-  dgg = { context = { name = '†' }, command = [[\dagger]] },
+  dag = { context = { name = '†' }, command = [[\dagger]] },
   ['+-'] = { context = { name = '†' }, command = [[\pm]] },
   ['-+'] = { context = { name = '†' }, command = [[\mp]] },
 }
@@ -427,10 +432,17 @@ local single_command_math_specs = {
     },
     command = [[\substack]],
   },
-  sq = {
+  sqrt = {
     context = {
       name = 'sqrt',
       dscr = 'sqrt',
+    },
+    command = [[\sqrt]],
+  },
+  nthrt = {
+    context = {
+      name = 'nthrt',
+      dscr = 'nth root',
     },
     command = [[\sqrt]],
     ext = { choice = true },
@@ -499,7 +511,7 @@ local postfix_math_specs = {
       post = [[}]],
     },
   },
-  htt = {
+  hat = {
     context = {
       name = 'hat',
       dscr = 'hat',
