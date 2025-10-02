@@ -815,6 +815,9 @@ require('lazy').setup({
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
     opts = {
+      enabled = function()
+        return not vim.tbl_contains({ 'tex' }, vim.bo.filetype) and vim.bo.buftype ~= 'prompt'
+      end,
       keymap = {
         -- 'default' (recommended) for mappings similar to built-in completions
         --   <c-y> to accept ([y]es) the completion.
@@ -906,6 +909,9 @@ require('lazy').setup({
   },
   {
     'folke/tokyonight.nvim',
+  },
+  {
+    'L3MON4D3/LuaSnip',
   },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },

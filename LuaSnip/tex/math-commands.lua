@@ -96,18 +96,18 @@ M = {
     { condition = tex.in_math, show_condition = tex.in_math }
   ),
   autosnippet({ trig = './', name = '/', dscr = '/ defucker', priority = 2000 }, t '/', { condition = tex.in_math, show_condition = tex.in_math }),
-  autosnippet(
-    { trig = '((\\d+)|(\\d*)(\\\\)?([A-Za-z]+)((\\^|_)(\\{\\d+\\}|\\d))*)\\/', name = 'fraction', dscr = 'auto fraction 1', trigEngine = 'ecma' },
-    fmta(
-      [[
-    \frac{<>}{<>}<>
-    ]],
-      { f(function(_, snip)
-        return snip.captures[1]
-      end), i(1), i(0) }
-    ),
-    { condition = tex.in_math, show_condition = tex.in_math }
-  ),
+  -- autosnippet(
+  --   { trig = '((\\d+)|(\\d*)(\\\\)?([A-Za-z]+)((\\^|_)(\\{\\d+\\}|\\d))*)\\/', name = 'fraction', dscr = 'auto fraction 1', trigEngine = 'ecma' },
+  --   fmta(
+  --     [[
+  --   \frac{<>}{<>}<>
+  --   ]],
+  --     { f(function(_, snip)
+  --       return snip.captures[1]
+  --     end), i(1), i(0) }
+  --   ),
+  --   { condition = tex.in_math, show_condition = tex.in_math }
+  -- ),
   autosnippet(
     { trig = '(^.*\\))/', name = 'fraction', dscr = 'auto fraction 2', trigEngine = 'ecma' },
     { d(1, generate_fraction) },
