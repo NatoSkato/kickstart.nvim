@@ -1074,6 +1074,10 @@ vim.api.nvim_set_keymap('s', '<C-p>', '<Plug>luasnip-prev-choice', {})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 vim.cmd 'set shellcmdflag=-ic'
+vim.cmd 'set expandtab'
+vim.cmd 'set shiftwidth=4'
+vim.cmd 'set softtabstop=2'
+vim.cmd 'set smarttab'
 -- vim.cmd [[
 -- noremap <expr> j (v:count? 'j' : 'gj')
 -- noremap <expr> k (v:count? 'k' : 'gk')
