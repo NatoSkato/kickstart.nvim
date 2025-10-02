@@ -48,7 +48,6 @@ local symbol_snippet = require('scaffolding').symbol_snippet
 local single_command_snippet = require('scaffolding').single_command_snippet
 local postfix_snippet = require('scaffolding').postfix_snippet
 local get_visual = require('scaffolding').get_visual
-
 -- fractions (parentheses case)
 local generate_fraction = function(_, snip)
   local stripped = snip.captures[1]
@@ -243,8 +242,11 @@ local auto_backslash_specs = {
 }
 
 local auto_backslash_snippets = {}
+-- for _, v in ipairs(auto_backslash_specs) do
+--   table.insert(auto_backslash_snippets, auto_backslash_snippet({ trig = v }, { condition = tex.in_math, show_condition = tex.in_math }))
+-- end
 for _, v in ipairs(auto_backslash_specs) do
-  table.insert(auto_backslash_snippets, auto_backslash_snippet({ trig = v }, { condition = tex.in_math, show_condition = tex.in_math }))
+  table.insert(auto_backslash_snippets, autosnippet({ trig = v }, { t('\\' .. v) }, { condition = tex.in_math, show_condition = tex.in_math }))
 end
 vim.list_extend(M, auto_backslash_snippets)
 
@@ -318,7 +320,7 @@ local symbol_specs = {
   CC = { context = { name = 'ℂ' }, command = [[\mathbb{C}]] },
   OO = { context = { name = '∅' }, command = [[\emptyset]] },
   pwr = { context = { name = 'P' }, command = [[\powerset]] },
-  cc = { context = { name = '⊂' }, command = [[\subset]] },
+  cs = { context = { name = '⊂' }, command = [[\subset]] },
   cq = { context = { name = '⊆' }, command = [[\subseteq]] },
   qq = { context = { name = '⊃' }, command = [[\supset]] },
   qc = { context = { name = '⊇' }, command = [[\supseteq]] },
