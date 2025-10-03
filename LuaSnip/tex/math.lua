@@ -95,7 +95,67 @@ M = {
       { i(1), i(0) }
     )
   ),
-
+  --note: the following have the first group ahead by 1 char as autopairs brings you back 1 char.
+  autosnippet(
+    { trig = 'lr()', name = '\\left(\\right)', dscr = 'inline math' },
+    fmta(
+      [[
+    \left(\<>right)<>
+    ]],
+      { i(1), i(0) }
+    ),
+    { condition = tex.in_math, show_condition = tex.in_math }
+  ),
+  autosnippet(
+    { trig = 'lr[]', name = '\\left[\\right]', dscr = 'left right square brackets' },
+    fmta(
+      [[
+    \left[\<>right]<>
+    ]],
+      { i(1), i(0) }
+    ),
+    { condition = tex.in_math, show_condition = tex.in_math }
+  ),
+  autosnippet(
+    { trig = 'lr{}', name = '\\left\\{\\right\\}', dscr = 'left right braces' },
+    fmta(
+      [[
+    \left\{\<>right\}<>
+    ]],
+      { i(1), i(0) }
+    ),
+    { condition = tex.in_math, show_condition = tex.in_math }
+  ),
+  autosnippet(
+    { trig = 'lr|', name = '\\left|\\right|', dscr = 'left right abs val' },
+    fmta(
+      [[
+    \left|<>\right|<>
+    ]],
+      { i(1), i(0) }
+    ),
+    { condition = tex.in_math, show_condition = tex.in_math }
+  ),
+  autosnippet(
+    { trig = 'lr\\|', name = '\\left\\|\\right\\|', dscr = 'left right norm' },
+    fmta(
+      [[
+    \left\|<>\right\|<>
+    ]],
+      { i(1), i(0) }
+    ),
+    { condition = tex.in_math, show_condition = tex.in_math }
+  ),
+  autosnippet(
+    { trig = 'lr<', name = '< >', dscr = 'left right angle brackes' },
+    fmta(
+      [[
+    \langle<>\rangle<>
+    ]],
+      { i(1), i(0) }
+    ),
+    { condition = tex.in_math, show_condition = tex.in_math }
+  ),
   autosnippet(
     { trig = 'dm', name = '\\[...\\]', dscr = 'display math' },
     fmta(
