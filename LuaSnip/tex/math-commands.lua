@@ -521,6 +521,16 @@ local postfix_math_specs = {
       post = [[}]],
     },
   },
+  vec = {
+    context = {
+      name = 'hat',
+      dscr = 'hat',
+    },
+    command = {
+      pre = [[\vec{]],
+      post = [[}]],
+    },
+  },
   bar = {
     context = {
       name = 'bar',
