@@ -84,7 +84,8 @@ M.auto_backslash_snippet = function(context, opts)
   end
   --  context.trig = '(?<!\\\\)' .. '(' .. context.trig .. ')'
   context.hidden = false
-  return autosnippet(context, t('\\' .. command), opts)
+  context.wordTrig = false
+  return autosnippet(context, t('\\' .. command .. ' '), opts)
 end
 
 -- Auto symbol

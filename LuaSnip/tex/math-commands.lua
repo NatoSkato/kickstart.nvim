@@ -126,6 +126,17 @@ M = {
   ),
 
   autosnippet(
+    { trig = 'int', name = 'integral', dscr = 'single integral' },
+    fmta(
+      [[ 
+    \int<><>
+    ]],
+      { c(1, { t '', fmta([[_{<>}^{<>}]], { i(1, '-\\infty'), i(2, '\\infty') }) }), i(0) }
+    ),
+    { condition = tex.in_math, show_condition = tex.in_math }
+  ),
+
+  autosnippet(
     { trig = 'sum', name = 'summation', dscr = 'summation' },
     fmta(
       [[
@@ -319,6 +330,7 @@ local symbol_specs = {
   ['!*'] = { context = { name = '⊗' }, command = [[\otimes]] },
   -- sets
   NN = { context = { name = 'ℕ' }, command = [[\mathbb{N}]] },
+  PP = { context = { name = 'P' }, command = [[\mathbb{P}]] },
   ZZ = { context = { name = 'ℤ' }, command = [[\mathbb{Z}]] },
   QQ = { context = { name = 'ℚ' }, command = [[\mathbb{Q}]] },
   RR = { context = { name = 'ℝ' }, command = [[\mathbb{R}]] },
