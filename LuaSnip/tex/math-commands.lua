@@ -374,6 +374,8 @@ local symbol_specs = {
   dag = { context = { name = '†' }, command = [[\dagger]] },
   ['+-'] = { context = { name = '†' }, command = [[\pm]] },
   ['-+'] = { context = { name = '†' }, command = [[\mp]] },
+  eqv = { context = { name = 'equiv' }, command = [[\equiv]] },
+  cong = { context = { name = 'cong' }, command = [[\cong]] },
 }
 
 local symbol_snippets = {}
@@ -533,10 +535,20 @@ local postfix_math_specs = {
       post = [[}]],
     },
   },
+  pmod = {
+    context = {
+      name = 'pmod',
+      dscr = 'pmod',
+    },
+    command = {
+      pre = [[\pmod{]],
+      post = [[}]],
+    },
+  },
   vec = {
     context = {
-      name = 'hat',
-      dscr = 'hat',
+      name = 'vec',
+      dscr = 'vector arrow',
     },
     command = {
       pre = [[\vec{]],
