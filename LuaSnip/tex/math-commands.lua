@@ -284,7 +284,7 @@ local greek_specs = {
   vv = { context = { name = 'ν' }, command = [[\nu]] },
   xi = { context = { name = 'ξ' }, command = [[\xi]] },
   pi = { context = { name = 'π' }, command = [[\pi]] },
-  rho = { context = { name = 'ρ' }, command = [[\rho]] },
+  p = { context = { name = 'ρ' }, command = [[\rho]] },
   sig = { context = { name = 'σ' }, command = [[\sigma]] },
   Sig = { context = { name = 'Σ' }, command = [[\Sigma]] },
   tau = { context = { name = 'τ' }, command = [[\tau]] },
@@ -376,6 +376,7 @@ local symbol_specs = {
   ['-+'] = { context = { name = '†' }, command = [[\mp]] },
   eqv = { context = { name = 'equiv' }, command = [[\equiv]] },
   cong = { context = { name = 'cong' }, command = [[\cong]] },
+  nsg = { context = { name = 'normal subgroup' }, command = [[\unlhd]] },
 }
 
 local symbol_snippets = {}
