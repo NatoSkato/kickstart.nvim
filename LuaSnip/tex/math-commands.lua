@@ -330,6 +330,7 @@ local symbol_specs = {
   ['!*'] = { context = { name = '⊗' }, command = [[\otimes]] },
   -- sets
   NN = { context = { name = 'ℕ' }, command = [[\mathbb{N}]] },
+  ExE = { context = { name = 'E' }, command = [[\mathbb{E}]] },
   PP = { context = { name = 'P' }, command = [[\mathbb{P}]] },
   ZZ = { context = { name = 'ℤ' }, command = [[\mathbb{Z}]] },
   QQ = { context = { name = 'ℚ' }, command = [[\mathbb{Q}]] },
