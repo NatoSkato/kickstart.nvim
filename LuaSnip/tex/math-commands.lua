@@ -375,7 +375,7 @@ local symbol_specs = {
   ['+-'] = { context = { name = '†' }, command = [[\pm]] },
   ['-+'] = { context = { name = '†' }, command = [[\mp]] },
   eqv = { context = { name = 'equiv' }, command = [[\equiv]] },
-  cong = { context = { name = 'cong' }, command = [[\cong]] },
+  cong = { context = { name = 'congruent' }, command = [[\cong]] },
   nsg = { context = { name = 'normal subgroup' }, command = [[\unlhd]] },
 }
 

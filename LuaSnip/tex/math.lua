@@ -250,7 +250,7 @@ M = {
     { trig = '([ZN])(%S+)([ZN])', name = 'Z mod n', descr = 'residue classes set', regTrig = true },
     fmta(
       [[
-	\mathbb{<>} \setminus <>\mathbb{<>}
+	\mathbb{<>} / <>\mathbb{<>}
 	]],
       {
         f(function(_, snip)
